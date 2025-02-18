@@ -25,4 +25,55 @@ genera contraseñas aleatorias
     <script src="script.js"></script>
 </body>
 </html>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+label, input, select {
+    margin: 10px 0;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+function generatePassword() {
+    const length = document.getElementById("length").value;
+    const structure = document.getElementById("structure").value;
+
+    let characters = "";
+    switch (parseInt(structure)) {
+        case 1:
+            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            break;
+        case 2:
+            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            break;
+        case 3:
+            characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~";
+            break;
+        default:
+            alert("Opción no válida.");
+            return;
+    }
+
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const index = Math.floor(Math.random() * characters.length);
+        password += characters.charAt(index);
+    }
+
+    document.getElementById("password").textContent = "Contraseña generada: " + password;
+}
+
     
